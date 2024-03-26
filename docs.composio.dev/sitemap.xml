@@ -1,0 +1,190 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    
+  <url>
+    <loc>https://docs.composio.dev/actions/action-guide</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/actions/local-code</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/api-reference/actions/execute-action</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/api-reference/actions/get-a-specific-action</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/api-reference/actions/get-list-of-actions</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/api-reference/apps/list-all-apps</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/api-reference/connectedaccounts/connect-an-account</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/api-reference/connectedaccounts/delete-a-connected-account</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/api-reference/connectedaccounts/get-a-connected-account</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/api-reference/connectedaccounts/list-all-connected-accounts</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/api-reference/integrations/create-a-new-integration</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/api-reference/integrations/get-an-integration</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/api-reference/integrations/list-all-integrations</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/api-reference/integrations/update-an-integration</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/asana</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/attio</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/calendly</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/clickup</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/discord</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/dropbox</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/github</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/gmail</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/google-calendar</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/google-docs</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/google-drive</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/google-sheets</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/hubspot</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/jira</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/linear</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/list</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/mailchimp</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/miro</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/notion</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/pipedrive</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/shopify</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/slack</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/spotify</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/todoist</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/trello</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/apps/zendesk</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/framework/autogen</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/framework/cli</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/framework/crewai</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/framework/langchain</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/integrations/custom-integration</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/integrations/integration-guide</loc>
+  </url>
+
+  <url>
+    <loc>https://docs.composio.dev/introduction/overview</loc>
+  </url>
+</urlset>
