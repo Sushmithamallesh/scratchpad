@@ -1,5 +1,5 @@
 import os
-from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 import numpy as np
 from ray.data import ActorPoolStrategy
@@ -10,14 +10,14 @@ class EmbedChunks:
         if model_name == "text-embedding-ada-002":
             self.embedding_model = OpenAIEmbeddings(
                 model=model_name,
-                openai_api_base=os.environ["OPENAI_API_BASE"],
-                openai_api_key=os.environ["OPENAI_API_KEY"],
+                openai_api_base=os.environ["OPENAI_AI_BASE"],
+                openai_api_key=os.environ["OPENAI_AI_KEY"],
             )
         else:
             self.embedding_model = HuggingFaceEmbeddings(
                 model_name=model_name,
-                model_kwargs={"device": "cuda"},
-                encode_kwargs={"device": "cuda", "batch_size": 100},
+                model_kwargs={"device": "cpu"},
+                encode_kwargs={"device": "cpu", "batch_size": 100},
             )
 
     def __call__(self, batch):

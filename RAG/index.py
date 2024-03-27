@@ -1,3 +1,4 @@
+import logging
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 import psycopg
 from pgvector.psycopg import register_vector
@@ -20,9 +21,23 @@ def chunk_section(section, chunk_size, chunk_overlap):
 
 
 class StoreResults:
+    def __init__(self):
+        self.logger = logging.getLogger(__name__)
+        self.logger.setLevel(logging.DEBUG)
+
+        handler = logging.StreamHandler()
+        handler.setLevel(logging.DEBUG)
+
+        formatter = logging.Formatter(
+            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        )
+        handler.setFormatter(formatter)
+
+        self.logger.addHandler(handler)
+
     def __call__(self, batch):
-        print("store results")
         try:
+            self.logger.debug(f"Storing results: {batch}")
             with psycopg.connect(
                 "dbname=test_rag user=sushmithamallesh host=localhost password=postgres"
             ) as conn:
@@ -41,5 +56,5 @@ class StoreResults:
                         )
             return {}
         except Exception as e:
-            print(e)
+            self.logger.error(f"Error while storing results: {e}")
             return {}
