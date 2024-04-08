@@ -24,3 +24,7 @@ share/python-wheels/
 MANIFEST
 myenv/
 .env
+*.DS_Store
+credentials.json
+token.json
+db/
