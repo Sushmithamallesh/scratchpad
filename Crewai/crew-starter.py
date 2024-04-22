@@ -2,10 +2,7 @@ import os
 from crewai import Agent, Task, Crew
 
 # Importing crewAI tools
-from crewai_tools import (
-    DirectoryReadTool,
-    FileReadTool,
-)
+from crewai_tools import DirectoryReadTool, FileReadTool, DirectorySearchTool
 from langchain_community.agent_toolkits import GmailToolkit
 from dotenv import load_dotenv
 
@@ -16,13 +13,13 @@ os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")  # OpenAI API key
 # Instantiate tools
 docs_tool = DirectoryReadTool(directory="./blog-posts")
 file_tool = FileReadTool()
-gmail_tool = GmailToolkit()
+rag_tool = DirectorySearchTool(directory="./mails")
 
 
 # init agent
 gmail_reader = Agent(
     role="Curator/Editor",
-    goal="Curate and summarize the mails",
+    goal="Answer the question",
     backstory="You are a curator/editor with a passion for technology.",
     verbose=True,
 )
@@ -36,9 +33,9 @@ gmail_reader = Agent(
 # )
 
 summarize = Task(
-    description="Find the latest email in my inbox and summarize it like a curator would. The email should be in the last 3 hours. Use query paramaters to limit the number of emails to 1",
-    expected_output="A summary of the email.",
-    tools=gmail_tool.get_tools(),
+    description="Find the latest email that I have stored in mails directory and answer the question: Do any of the newsletter discuss employee benefits or policies?",
+    expected_output="An answer to the question.",
+    tools=[rag_tool],
     agent=gmail_reader,
 )
 

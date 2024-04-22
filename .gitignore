@@ -28,3 +28,6 @@ myenv/
 credentials.json
 token.json
 db/
+token.pickle
+cache/
+vector.chroma/
