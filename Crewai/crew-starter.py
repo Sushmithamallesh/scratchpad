@@ -11,10 +11,7 @@ load_dotenv()
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")  # OpenAI API key
 
 # Instantiate tools
-docs_tool = DirectoryReadTool(directory="./blog-posts")
-file_tool = FileReadTool()
-rag_tool = DirectorySearchTool(directory="./mails")
-
+gmail_tool = GmailToolkit()
 
 # init agent
 gmail_reader = Agent(
@@ -32,10 +29,10 @@ gmail_reader = Agent(
 #     verbose=True,
 # )
 
-summarize = Task(
-    description="Find the latest email that I have stored in mails directory and answer the question: Do any of the newsletter discuss employee benefits or policies?",
-    expected_output="An answer to the question.",
-    tools=[rag_tool],
+present = Task(
+    description="List all the emails I have received from byrne hobart in the last 30 days.",
+    expected_output="The subject of the email.",
+    tools=[gmail_tool],
     agent=gmail_reader,
 )
 
@@ -47,7 +44,7 @@ summarize = Task(
 # )
 
 # Assemble a crew
-crew = Crew(agents=[gmail_reader], tasks=[summarize], verbose=2)
+crew = Crew(agents=[gmail_reader], tasks=[present], verbose=2)
 
 # Execute tasks
 crew.kickoff()
