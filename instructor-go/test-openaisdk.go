@@ -1,64 +1,136 @@
-package main
+// package main
 
-import (
-	"context"
-	"encoding/base64"
-	"fmt"
-	"io/ioutil"
-	"net/http"
-	"os"
+// import (
+// 	"context"
+// 	"fmt"
+// 	"os"
 
-	"github.com/joho/godotenv"
+// 	"github.com/instructor-ai/instructor-go/pkg/instructor"
+// 	"github.com/joho/godotenv"
+// 	"github.com/liushuangls/go-anthropic/v2"
+// )
 
-	openai "github.com/sashabaranov/go-openai"
-)
+// type Movie struct {
+// 	Title string `json:"title"  jsonschema:"title=title,description=The title of the movie,example=Harry Potter and the Philosopher's Stone"`
+// 	Year  int    `json:"year,omitempty"   jsonschema:"title=year,description=The year of the movie,example=2001"`
+// }
 
-func ImageToBase64(url string) (string, error) {
-	resp, err := http.Get(url)
-	if err != nil {
-		return "", err
-	}
-	defer resp.Body.Close()
+// type MovieCatalog struct {
+// 	Catalog []Movie `json:"catalog"`
+// }
 
-	data, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return "", err
-	}
+// func (bc *MovieCatalog) PrintCatalog() {
+// 	fmt.Printf("Number of movies in the catalog: %d\n\n", len(bc.Catalog))
+// 	for _, movie := range bc.Catalog {
+// 		fmt.Printf("Title:  %s\n", movie.Title)
+// 		if movie.Year != 0 {
+// 			fmt.Printf("Year:   %d\n", movie.Year)
+// 		}
+// 		fmt.Println("--------------------")
+// 	}
+// }
 
-	return "data:" + resp.Header.Get("Content-Type") + ";base64," + base64.StdEncoding.EncodeToString(data), nil
-}
+// func main() {
+// 	ctx := context.Background()
+// 	err := godotenv.Load()
+// 	if err != nil {
+// 		panic(err)
+// 	}
 
-func test() {
-	err := godotenv.Load()
-	if err != nil {
-		panic(err)
-	}
-	client := openai.NewClient(os.Getenv("OPENAI_API_KEY"))
-	image_url := "https://utfs.io/f/5b079e4a-4d4f-4481-823d-86834d8db4bc-6bhxt2.webp"
-	resp, err := client.CreateChatCompletion(
-		context.Background(),
-		openai.ChatCompletionRequest{
-			Model: openai.GPT4VisionPreview,
-			Messages: []openai.ChatCompletionMessage{
-				{
-					Role: openai.ChatMessageRoleUser,
-					MultiContent: []openai.ChatMessagePart{
-						{
-							Type: "image_url",
-							ImageURL: &openai.ChatMessageImageURL{
-								URL: image_url,
-							},
-						},
-					},
-				},
-			},
-		},
-	)
+// 	client, err := instructor.FromAnthropic[MovieCatalog](
+// 		anthropic.NewClient(os.Getenv("ANTHROPIC_API_KEY")),
+// 		instructor.WithMode(instructor.ModeJSONSchema),
+// 		instructor.WithMaxRetries(3),
+// 	)
+// 	if err != nil {
+// 		panic(err)
+// 	}
 
-	if err != nil {
-		fmt.Printf("Error: %v\n", err)
-		return
-	}
+// 	url := "https://utfs.io/f/bd0dbae6-27e3-4604-b640-fd2ffea891b8-fxyywt.jpeg"
 
-	fmt.Printf("Response: %s\n", resp.Choices[0].Message.Content)
-}
+// 	movieCatalog, err := client.CreateChatCompletion(
+// 		ctx,
+// 		instructor.Request{
+// 			Model: "claude-3-haiku-20240307",
+// 			Messages: []instructor.Message{
+// 				{
+// 					Role: instructor.RoleUser,
+// 					MultiContent: []instructor.ChatMessagePart{
+// 						{
+// 							Type: instructor.ChatMessagePartTypeText,
+// 							Text: "Using the instructor package, extract the movie catalog from the image and return only the JSON output.",
+// 						},
+// 						{
+// 							Type: instructor.ChatMessagePartTypeImageURL,
+// 							ImageURL: &instructor.ChatMessageImageURL{
+// 								URL: url,
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 		},
+// 	)
+
+// 	if err != nil {
+// 		panic(err)
+// 	}
+
+// 	movieCatalog.PrintCatalog()
+// 	/*
+// 		Number of movies in the catalog: 18
+// 		Title:  Oppenheimer
+// 		Year:   2023
+// 		--------------------
+// 		Title:  The Dark Knight
+// 		Year:   2008
+// 		--------------------
+// 		Title:  Interstellar
+// 		Year:   2014
+// 		--------------------
+// 		Title:  Inception
+// 		Year:   2010
+// 		--------------------
+// 		Title:  Tenet
+// 		Year:   2020
+// 		--------------------
+// 		Title:  Dunkirk
+// 		Year:   2017
+// 		--------------------
+// 		Title:  Memento
+// 		Year:   2000
+// 		--------------------
+// 		Title:  The Dark Knight Rises
+// 		Year:   2012
+// 		--------------------
+// 		Title:  Batman Begins
+// 		Year:   2005
+// 		--------------------
+// 		Title:  The Prestige
+// 		Year:   2006
+// 		--------------------
+// 		Title:  Insomnia
+// 		Year:   2002
+// 		--------------------
+// 		Title:  Following
+// 		Year:   1998
+// 		--------------------
+// 		Title:  Man of Steel
+// 		Year:   2013
+// 		--------------------
+// 		Title:  Transcendence
+// 		Year:   2014
+// 		--------------------
+// 		Title:  Justice League
+// 		Year:   2017
+// 		--------------------
+// 		Title:  Batman v Superman: Dawn of Justice
+// 		Year:   2016
+// 		--------------------
+// 		Title:  Ending the Knight
+// 		Year:   2016
+// 		--------------------
+// 		Title:  Larceny
+// 		--------------------
+// 	*/
+// }

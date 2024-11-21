@@ -31,3 +31,4 @@ db/
 token.pickle
 cache/
 vector.chroma/
+node_modules/
